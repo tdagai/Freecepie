@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
+import styled from 'styled-components';
+import IngredientsList from './Ingredients/IngredientsList'
+import { IngredientItemProps } from './Ingredients/IngredientItem';
 import './App.css';
+import { UnitsOfMeasurementImperial } from './constants';
+
 
 function App() {
+
+  const ingredients: IngredientItemProps[] = [
+    { quantity: 2, units: UnitsOfMeasurementImperial.teaspoon, name: 'salt' },
+    { quantity: 1.75, units: UnitsOfMeasurementImperial.cup, name: 'flour' }
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppWrapper>
+      is it thursday yet?
+      <IngredientsList ingredients={ingredients} />
+    </AppWrapper>
   );
 }
+
+const AppWrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
+  padding: 10px;
+`;
 
 export default App;
